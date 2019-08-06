@@ -13,9 +13,7 @@ RUN mkdir /var/run/sshd
 RUN useradd -m -s /bin/bash web
 RUN echo 'web:D7dbZMkgM7PRNe4P' |chpasswd
 RUN usermod -aG sudo web
-
-RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+RUN passwd -e web
 
 RUN mkdir /root/.ssh
 
