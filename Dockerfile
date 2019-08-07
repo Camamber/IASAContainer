@@ -10,10 +10,15 @@ RUN sudo apt-get install nodejs -y
 RUN apt-get install -y sudo openssh-server
 RUN mkdir /var/run/sshd
 
-RUN useradd -m -s /bin/bash web
-RUN echo 'web:D7dbZMkgM7PRNe4P' |chpasswd
-RUN usermod -aG sudo web
-RUN passwd -e web
+#setup web user and sudo user
+RUN useradd -m -s /bin/bash web && \
+    echo 'web:D7dbZMkgM7PRNe4P' |chpasswd && \
+    passwd -e web
+
+RUN useradd -m -s /bin/bash camamber && \
+    echo 'camamber:dn86sm3pyx2b4cf2' |chpasswd && \
+    usermod -aG sudo camamber && \
+    passwd -e camamber
 
 RUN mkdir /root/.ssh
 
