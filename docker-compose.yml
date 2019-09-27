@@ -1,0 +1,11 @@
+version: "3.0"
+services:
+  sc_iasa:
+    container_name: "sc_iasa"
+    build: 
+      context: './sc_iasa'
+    restart: "unless-stopped"
+    volumes: "data:/home/web/"
+    ports:
+      - "${SC_SSH_PORT}:22"
+      - "${SC_NGINX_PORT}:80"
