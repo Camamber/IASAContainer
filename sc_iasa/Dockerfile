@@ -14,7 +14,6 @@ RUN apt-get install nginx -y
 #setup php
 RUN apt-get install php-fpm php-mysql -y
 RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
-RUN service php7.2-fpm restart
 
 #setup ssh
 RUN apt-get install vim openssh-server -y
