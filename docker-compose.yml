@@ -5,6 +5,9 @@ services:
     build: 
       context: './sc_iasa'
     restart: "unless-stopped"
+    volumes:
+      - "${SC_DATA_PATH}:/home/web/public_html"
     ports:
       - "${SC_SSH_PORT}:22"
-      - "${SC_NGINX_PORT}:80"
+      - "${SC_HTTP_PORT}:80"
+      - "${SC_HTTPS_PORT}:443"

@@ -1,17 +1,20 @@
 FROM ubuntu:latest
 LABEL maintainer="Camamber"
 
+#setup basic utilities
+RUN apt-get update && apt-get install curl sudo vim certbot -y
 
 #setup nodejs
-RUN apt-get update && apt-get install curl sudo -y
+RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-RUN  apt-get install nodejs -y
+RUN apt-get install nodejs -y
 
 #setup nginx
 RUN apt-get update
 RUN apt-get install nginx -y
 
 #setup php
+RUN apt-get update
 RUN apt-get install php-fpm php-mysql -y
 RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
 
