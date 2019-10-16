@@ -3,7 +3,7 @@ services:
   sc_iasa:
     container_name: "sc_iasa"
     build: 
-      context: './sc_iasa'
+      context: '.'
     restart: "unless-stopped"
     volumes:
       - "${SC_DATA_PATH}:/home/web/public_html"
